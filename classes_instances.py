@@ -35,6 +35,49 @@ pet.feed()
 pet.sleep()
 pet.status()
 
+#Task 2
+
+class Song:
+    def __init__(self, title, artist, duration):
+        self.title = title
+        self.artist = artist
+        self.duration = duration
+
+
+class Playlist:
+    def __init__(self, name):
+        self.name = name
+        self.songs = []          
+
+    def add_song(self, song):
+        self.songs.append(song)  
+
+    def remove_song(self, title):
+        for song in self.songs:
+            if song.title == title:     
+                self.songs.remove(song)
+                return
+        print(f"No song titled '{title}' found.")
+
+    def total_duration(self):
+        total = sum(song.duration for song in self.songs)  
+        print(f"{total // 60}m {total % 60}s")
+
+    def shuffle(self):
+        import random
+        random.shuffle(self.songs)
+        print("New order:")
+        for song in self.songs:
+            print(f"- {song.title}")
+
+p = Playlist("Road Trip")
+p.add_song(Song("Song A", "Artist X", 200))
+p.add_song(Song("Song B", "Artist Y", 180))
+p.total_duration()
+p.shuffle()
+p.remove_song("Song A")
+print(len(p.songs))            
+
 
 
 
